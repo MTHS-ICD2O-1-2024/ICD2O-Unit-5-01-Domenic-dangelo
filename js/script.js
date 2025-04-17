@@ -6,21 +6,25 @@
 
 const randomNumber = Math.floor(Math.random() * 6) + 1
 
-
-"use strict"
-
 /**
  * This function checks if the user has selected the random number from above.
  */
 // eslint-disable-next-line no-unused-vars
 function calculate() {
   // input
-  const userNumber = parseint(document.getElementById("guess").value)
+  const userNumber = parseInt(document.getElementById("guess").value)
 
   // process
-  const temperatureInCelsius = (temperatureInFahrenheit - 32) * 5 / 9 
+  if(userNumber === randomNumber) {
+    //output
+    document.getElementById('result').innerHTML =
+      '<p>You have guessed the correct number!</p>'
+  }
 
-  // output
-  document.getElementById("answer").innerHTML =
-    "The temperature in celsius is: " + temperatureInCelsius.toFixed(3) + " °C"
+  if(userNumber !== randomNumber) {
+    //output
+    document.getElementById('result').innerHTML =
+      '<p>You have guessed the wrong number!' +
+      '<br/>The correct number was: ' + randomNumber + '</p>'
+  }
 }
